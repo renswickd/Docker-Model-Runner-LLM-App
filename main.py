@@ -17,3 +17,6 @@ data = {
 
 response = requests.post(url=url, json=data)
 response.raise_for_status()
+
+# Extract results
+print(response.json()["choices"][0]["message"]["content"])
