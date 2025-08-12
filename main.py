@@ -23,5 +23,8 @@ try:
     print(response.json()["choices"][0]["message"]["content"])
 
 except:
-    pass
+    print("An error occurred while making the request.")
+    print("Status Code:", response.status_code)
+    print("Response Text:", response.text)
+    raise
 
