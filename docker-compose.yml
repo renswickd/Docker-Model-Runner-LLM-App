@@ -1,0 +1,29 @@
+services:
+  app:
+    build: 
+      context: ./app
+      dockerfile: Dockerfile
+    env_file: 'backend.env'
+    ports:
+      - "8501:8501"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    depends_on:
+      - llm
+    networks:
+      - dmr-network
+
+  llm:
+    provider:
+      type: model
+      options:
+        model: ${LLM_MODEL_NAME:-ai/smollm2:latest}
+    networks:
+      - dmr-network
+
+networks:
+  dmr-network:
+    driver: bridge
