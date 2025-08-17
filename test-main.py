@@ -1,6 +1,6 @@
 import requests
 
-url = "http://localhost:12434/engines/11ama.cpp/v1/chat/completions"
+url = "http://localhost:12434/engines/llama.cpp/v1/chat/completions"
 data = {
     "model": "ai/smollm2",
     "messages" : [
